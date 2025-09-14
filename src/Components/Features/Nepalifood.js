@@ -1,4 +1,7 @@
 import React from "react";
+import { useGetProductQuery } from "../../Api/productApi";
+import { imageUrl } from "../../Constant/Constant";
+
 import {
   Card,
   CardHeader,
@@ -9,6 +12,7 @@ import {
 } from "@material-tailwind/react";
 
 const Nepalifood = () => {
+  const {data} = useGetProductQuery();
   const nepaliFoods = [
     {
       id: 1,
@@ -58,22 +62,22 @@ const Nepalifood = () => {
     <div className="container mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold  mt-20 text-center mb-8 text-gray-800">Nepali Foods</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {nepaliFoods.map((food) => (
-          <Card key={food.id} className="w-full shadow-lg hover:shadow-xl transition-shadow">
+        {data?.data.map(({productname,price,detail,category,product_image,_id}) => (
+          <Card key={_id} className="w-full shadow-lg hover:shadow-xl transition-shadow">
             <CardHeader shadow={false} floated={false} className="h-60">
               <img
-                src={food.image}
-                alt={food.name}
+                src={`${imageUrl}${product_image}`}
+                alt={productname}
                 className="h-full w-full object-cover rounded-xl"
               />
             </CardHeader>
             <CardBody>
               <div className="mb-2 flex items-center justify-between">
                 <Typography color="blue-gray" className="font-semibold text-lg">
-                  {food.name}
+                  {productname}
                 </Typography>
                 <Typography color="blue-gray" className="font-medium">
-                  {food.price}
+                  Rs:-{price}/-
                 </Typography>
               </div>
               <Typography
@@ -81,7 +85,14 @@ const Nepalifood = () => {
                 color="gray"
                 className="font-normal opacity-75 text-sm"
               >
-                {food.description}
+                {detail}
+              </Typography>
+               <Typography
+                variant="small"
+                color="gray"
+                className="font-normal opacity-75 text-sm"
+              >
+                {category}
               </Typography>
             </CardBody>
             <CardFooter className="pt-0">
