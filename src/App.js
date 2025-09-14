@@ -22,7 +22,7 @@ const route = createBrowserRouter([
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> }, 
       { path: 'foods/nepali', element: <Nepalifood /> },
-      { path: 'foods/indian', element: <Indianfood /> },
+      { path: 'foods/indian', element: <Indianfood /> }, 
       { path: 'foods/chinese', element: <Chinesefood /> },
       { path: 'rooms', element: <Rooms/> },
     ]

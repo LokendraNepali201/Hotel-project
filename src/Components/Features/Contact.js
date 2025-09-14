@@ -79,7 +79,7 @@ const Contact = () => {
               <FaEnvelope className="text-indigo-600 mt-1" />
               <div>
                 <strong>Email:</strong>
-                lbkhatri@royal.com.np
+                Hroyals@royal.com.np
         
               </div>
             </div>
